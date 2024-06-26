@@ -7,7 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'demoV1.0';
-  clickMe(){
-    alert("Hi there")
-  }
 }
