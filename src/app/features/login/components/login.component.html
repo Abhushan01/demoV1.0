@@ -62,7 +62,7 @@
                       <div class="forgetLink text-primary" (click)="passWordForgot = true; loginForm.reset()">Forgot your password?</div>
                     </div>
                     <div class="mt-4">
-                      <button class="btn btn-primary submitBtn" [disabled]="loginForm.invalid" [routerLink]="loginForm.valid?'/home/test':''" (click)="clickMe()">Log In</button>
+                      <button class="btn btn-primary submitBtn" [disabled]="loginForm.invalid" [routerLink]="loginForm.valid?'/portal/home':''" (click)="clickMe()">Log In</button>
                     </div>
                   </form>
                 </div>
