@@ -1,0 +1,8 @@
+{
+  "routes": [
+    "/login",
+    "/portal",
+    "/portal/home",
+    "/portal/test"
+  ]
+}
