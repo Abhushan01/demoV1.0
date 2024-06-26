@@ -1,26 +1,158 @@
-<p>login works!</p>
-<h1>LOGIN</h1>
-<button (click)="clickMe()" class="btn btn-primary">click me</button>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
+<section class="container-fluid">
+    <div class="row main">
+      <div class="col-lg-5 design-pattern row mx-0 px-0 h-sm-25">
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+      </div>
+      <div class="col-lg-7 col-sm-12 h-lg-100 d-flex align-items-center row mx-0 px-0">
+          @if(!passWordForgot){
+                <div class="container col-lg-6 col-sm-3 gx-5">
+                <div class="header-part">
+                  <div class="h2">Hello there!</div>
+                  <div class="h6 fw-light">Enter to get started</div>
+                </div>
+        
+                <div class="body-part mt-4">
+                  {{loginForm.value| json}}
+                  <form [formGroup]="loginForm">
+                    <label for="username" class="fw-bolder">Username <span class="text-danger">*</span></label>
+                    <div class="input-group mb-3 mt-2">
+                      <span class="input-group-text" id="basic-addon1">&#64;</span><input
+                        type="text"
+                        class="form-control shadow-sm"
+                        placeholder="Enter your username"
+                        aria-label="Username"
+                        id="username"
+                        aria-describedby="basic-addon1"
+                        formControlName="username"
+                      />
+                    </div>
+                    <label for="password" class="fw-bolder">Password <span class="text-danger">*</span></label>
+                    <div class="input-group mb-3 mt-2">
+                      <input
+                        [type]="showPassword ? 'text' : 'password'"
+                        class="form-control shadow-sm"
+                        placeholder="Enter password"
+                        id="password"
+                        aria-label="Username"
+                        formControlName="password"
+                        aria-describedby="basic-addon2"
+                        #passwordField
+                      />
+                      <span class="input-group-text" id="basic-addon2" (click)="showIcon(passwordField.value)"><i class="bi" [ngClass]="!showPassword ? 'bi-eye-slash' : 'bi-eye'"></i></span>
+                    </div>
+                    <div class="mt-2 d-flex justify-content-between">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value=""
+                          id="remberme"
+                          formControlName="remember"
+                        />
+                        <label class="form-check-label" for="remberme">Remember me</label>
+                      </div>
+                      <div class="forgetLink text-primary" (click)="passWordForgot = true; loginForm.reset()">Forgot your password?</div>
+                    </div>
+                    <div class="mt-4">
+                      <button class="btn btn-primary submitBtn" [disabled]="loginForm.invalid" [routerLink]="loginForm.valid?'/home/test':''" (click)="clickMe()">Log In</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+          }@else{
+              <div class="container col-lg-6 col-sm-3 gx-5">
+                  <div class="header-part">
+                      <div class="h5 fw-light mb-3 backPassword" (click)="passWordForgot = false; nextPassword = false;passwordResetForm.reset()">
+                        <i class="bi bi-arrow-left"></i> Back
+                    </div>
+                    <div class="h2">Forgot Password?</div>
+                    <div class="h6 fw-lighter">
+                      {{!nextPassword? "Enter your username and answer the security questions you set at time of first time login.": "Please enter answers to your security questions and set your new password"}}
+                    </div>
+                  </div>
   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+                  <div class="body-part mt-4">
+                      <form [formGroup]="passwordResetForm">
+                          @if(!nextPassword){
+                              <label for="username" class="fw-bolder">Username <span class="text-danger">*</span></label> 
+                              <div class="input-group mb-3 mt-2">
+                              <span class="input-group-text" id="basic-addon1">&#64;</span>
+                                <input
+                                  type="text"
+                                  class="form-control shadow-sm"
+                                  placeholder="Enter your username"
+                                  aria-label="Username"
+                                  id="username"
+                                  aria-describedby="basic-addon1"
+                                  formControlName="username"/>
+                              </div>
+                              <div class="mt-4 d-flex justify-content-end h5 fw-light backPassword" (click)="nextPassword = true">Next<i class="bi bi-arrow-right"></i></div>
+                          }@else {
+                              <label for="username" class="fw-bolder">1. Enter your Favorite Movie<span class="text-danger">*</span></label>
+                              <div class="input-group mb-3 mt-2">
+                                  <input
+                                  type="text"
+                                  class="form-control shadow-sm"
+                                  placeholder="Enter your answer"
+                                  aria-label="Username"
+                                  id="username"
+                                  formControlName="username"
+                                />
+                              </div>
+                              <label for="username" class="fw-bolder">2. Enter your Favorite Team<span class="text-danger">*</span></label>
+                              <div class="input-group mb-3 mt-2">
+                              <input
+                                  type="text"
+                                  class="form-control shadow-sm"
+                                  placeholder="Enter your answer"
+                                  aria-label="Username"
+                                  id="username"
+                                  formControlName="username"
+                                />
+                              </div>
+                              
+                              <label for="password" class="fw-bolder">New Password <span class="text-danger">*</span></label>
+                              <div class="input-group mt-2">
+                              <input
+                                  [type]="showPassword ? 'text' : 'password'"
+                                  class="form-control shadow-sm"
+                                  placeholder="Enter password"
+                                  id="password"
+                                  aria-label="Username"
+                                  formControlName="newPassword"
+                                  aria-describedby="basic-addon2"
+                                  #passwordField
+                                />
+                                <span class="input-group-text"id="basic-addon2" (click)="showIcon(passwordField.value)"><i class="bi" [ngClass]="!showPassword ? 'bi-eye-slash' : 'bi-eye'"></i></span></div>
+                                <div id="passwordHelpBlock mb-3" class="form-text"> Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</div>
+                              <div
+                                class="progress mt-3"
+                                role="progressbar"
+                                aria-label="Example 1px high"
+                                aria-valuenow="25"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="height: 1px"
+                              >
+                              <div class="progress-bar w-75"></div> 
+                              </div> 
+                              <div class="mt-4">
+                                <button class="btn btn-primary submitBtn" [disabled]="passwordResetForm.invalid">Reset</button>
+                              </div>
+                          }
+                      </form>
+                  </div>
+              </div>
+          }
       </div>
     </div>
-  </div>
+  </section>
+  

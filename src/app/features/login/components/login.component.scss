@@ -1,0 +1,79 @@
+.main {
+    height: 100vh;
+  }
+  
+  .design-pattern {
+    .col-4 {
+      height: 33%;
+    }
+    .col-4:nth-of-type(even) {
+      background: linear-gradient(45deg, #ffffff 25%, transparent 25%),
+        linear-gradient(315deg, #ffffff 25%, transparent 25%),
+        linear-gradient(
+          45deg,
+          transparent 24%,
+          #4f46e4 25%,
+          #4f46e4 30%,
+          transparent 31%,
+          transparent 39%,
+          #4f46e4 40%,
+          #4f46e4 45%,
+          transparent 45%
+        ),
+        linear-gradient(
+          315deg,
+          transparent 24%,
+          #4f46e4 25%,
+          #4f46e4 30%,
+          transparent 31%,
+          transparent 39%,
+          #4f46e4 40%,
+          #4f46e4 45%,
+          transparent 45%
+        );
+      background-size: 3em 3em;
+      background-color: #ffffff;
+      opacity: 1;
+    }
+    .col-4:nth-child(odd) {
+      background: radial-gradient(
+          circle at top left,
+          #f0a3f4 25%,
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          transparent 19%,
+          #f0a3f4 20%,
+          #f0a3f4 25%,
+          transparent 21%,
+          transparent 100%
+        ),
+        radial-gradient(
+          circle at bottom left,
+          transparent 19%,
+          #f0a3f4 20%,
+          #f0a3f4 25%,
+          transparent 26%
+        ),
+        radial-gradient(circle at top right, #f0a3f4 25%, transparent 26%);
+      background-size: 3em 3em;
+      background-color: #ffffff;
+      opacity: 1;
+    }
+  }
+  
+  .col-lg-7{
+    .container{
+    .submitBtn{
+      width: 100%;
+      height: 50px;
+    }
+    }
+    // .p-lg-5{
+    //   padding: 6.5em !important;
+    // }
+  }
+
+
+  .forgetLink,.backPassword,#basic-addon2{cursor: pointer !important;}

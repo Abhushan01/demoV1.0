@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -6,11 +7,36 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-constructor(){}
+  loginForm!: FormGroup;
+  passwordResetForm!:FormGroup;
+  passWordForgot:boolean=false;
+   showPassword:boolean=false;
+    nextPassword:boolean=false;
+     constructor(
+  private fb:FormBuilder ){ }
+  
+   ngOnInit(): void {
+   this.createLoginForm();
+   }
+  
+   createLoginForm(){
+   this.loginForm=this.fb.group({
+   username:new FormControl(null,Validators.required),
+   password:new FormControl(null,[Validators.required,Validators.maxLength(10)]),
+   remember:new FormControl(false)
+   })
+  
+  this.passwordResetForm=this.fb.group({
+  username:new FormControl(null,Validators.required),
+  newPassword:new FormControl(null,[Validators.required,Validators.maxLength(10)])
+  })
+  }
+  
+  showIcon(value:string){
+  this.showPassword=!this.showPassword;
+   }
 
-clickMe(){
-  alert("it is hero time")
-  console.log("Hello world");
-}
-
+   clickMe(){
+    console.log("Hello world")
+   }
 }
